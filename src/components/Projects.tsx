@@ -1,6 +1,6 @@
-import GameAdvicer from "../assets/GameAdvicer.png";
-import Ecom from "../assets/E-com.png";
-import landingAi from "../assets/Landingai.png";
+import GameAdvicer from "../assets/gameadvicer.png";
+import Ecom from "../assets/e-com.png";
+import landingAi from "../assets/landingai.png";
 
 import { useState } from "react";
 
