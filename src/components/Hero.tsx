@@ -15,7 +15,7 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <section className="relative w-full h-[90vh]">
+    <section id="hero" className="relative w-full h-[90vh]">
       <Shader className="w-full h-full">
         <CursorRipples intensity={5} radius={0.3}>
           <Blob colorB="#00ff50" size={0.3} deformation={0.5} speed={speed} />
