@@ -39,19 +39,19 @@ const Projects = () => {
         {projects.map((project, index) => (
           <div
           key={index}
-          className="bg-[#1de00724] p-4 rounded-lg gap-2 lg:h-120 flex flex-col justify-between hover:bg-[#1de0074d] transition-colors duration-300"
+          className="bg-[#1de00724] p-4 rounded-lg gap-8 lg:max-h-120 flex flex-col hover:bg-[#1de0074d] transition-colors duration-300"
           onClick={() => setVisible((prev) => prev === index ? null : index)}
         >
           <h3 className="text-xl font-bold">{project.title}</h3>
 
           <div
-            className={`overflow-hidden md:max-h-58 transition-[max-height] duration-500
+            className={`overflow-hidden md:max-h-58 transition-[max-height] duration-500 rounded-lg
           ${visible === index ? "max-h-58" : "max-h-0"}`}
           >
             <img
               src={project.image}
               alt={project.title}
-              className="w-full rounded-lg mb-2"
+              className="w-full mb-2 rounded-lg"
             />
           </div>
 

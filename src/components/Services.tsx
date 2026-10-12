@@ -1,7 +1,12 @@
+import ToolsIcon from "../assets/tools.svg"
+import PCIcon from "../assets/monitor.svg"
+import PlugIcon from "../assets/plug.svg"
+import AtomIcon from "../assets/atom.svg"
+
 const Services = () => {
   const services = [
     {
-      icon: "🖥️",
+      icon: PCIcon,
       title: "Responsive Landing Pages",
       description:
         "Modern, mobile-friendly landing pages built with React, TypeScript, and Tailwind CSS.",
@@ -12,7 +17,7 @@ const Services = () => {
       ],
     },
     {
-      icon: "⚛️",
+      icon: AtomIcon,
       title: "React Web App Development",
       description:
         "Interactive single-page applications with clean component structure and TypeScript.",
@@ -23,7 +28,7 @@ const Services = () => {
       ],
     },
     {
-      icon: "🔌",
+      icon: PlugIcon,
       title: "API Integration",
       description:
         "Connect your frontend to REST APIs with reliable data fetching and user-friendly states.",
@@ -34,7 +39,7 @@ const Services = () => {
       ],
     },
     {
-      icon: "🛠️",
+      icon: ToolsIcon,
       title: "Bug Fixes & UI Improvements",
       description:
         "Improve or fix an existing React frontend: layout issues, responsiveness, and small features.",
@@ -42,17 +47,19 @@ const Services = () => {
     },
   ];
   return (
-    <section id="services" className="relative w-full flex flex-col items-center">
+    <section id="services" className="relative w-full flex flex-col items-center text-center">
       <h2 className="text-4xl font-bold text-center mb-4">Services</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 place-items-center gap-4 p-4 max-w-6xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-items-center gap-4 p-4 max-w-7xl">
         {services.map((service, index) => (
           <div
             key={index}
-            className="bg-[#1de00724] max-w-xl p-4 rounded-lg flex flex-col justify-between"
+            className=" max-w-xl h-full p-4 rounded-lg flex flex-col justify-between"
           >
+            <div className="w-full flex justify-center mb-8">
+              <img src={service.icon} className="w-37.5" alt="tools" />
+            </div>
             <div>
-              <span className="text-3xl">{service.icon}</span>
-              <h3 className="text-xl font-bold">{service.title}</h3>
+              <h3 className="text-xl font-bold mb-2 h-14">{service.title}</h3>
               <p>{service.description}</p>
             </div>
             <ul className="mt-2 list-disc list-inside text-gray-400">
