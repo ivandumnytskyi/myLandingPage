@@ -6,7 +6,7 @@ const Skills = () => {
   },
   {
     title: "Tools & Workflow",
-    skills: ["Git", "GitHub", "Vite", "Vercel", "REST API", "Chrome DevTools"],
+    skills: ["Git", "GitHub", "Vite", "Vercel", "REST API"],
   },
   {
     title: "Full-Stack",

@@ -1,3 +1,4 @@
+import Logo from "../../public/logo.svg"
 import { useState } from "react";
 
 const Header = () => {
@@ -6,7 +7,8 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 w-full bg-[#1e5b17] backdrop-blur-md z-50">
       <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-        <h1 className="text-xl font-bold">Ivan Dumnytskyi</h1>
+        <h1 className="text-xl font-bold flex items-center gap-2">
+          <img src={Logo} alt="logo"  className="max-h-8"/>IvanBuilds</h1>
         <button
           className="flex items-center cursor-pointer md:hidden transition hover:bg-white/5"
           aria-label="navigation menu"
