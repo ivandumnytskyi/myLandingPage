@@ -32,11 +32,11 @@ const Header = () => {
 
       gsap.to(window, {
         duration: 1.2,
-        ease: "power3.inOut", // Elegant easing for transition curves
+        ease: "power3.inOut",
         scrollTo: {
           y: targetId,
-          offsetY: calculateOffset(), // Offsets scrolling so the box lands centered
-          autoKill: true, // Safely halts GSAP if the user grabs the scroll wheel mid-move
+          offsetY: calculateOffset(),
+          autoKill: mobile, 
         },
       });
     },
