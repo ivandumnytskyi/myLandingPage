@@ -2,6 +2,10 @@ import ToolsIcon from "../assets/tools.svg"
 import PCIcon from "../assets/monitor.svg"
 import PlugIcon from "../assets/plug.svg"
 import AtomIcon from "../assets/atom.svg"
+import { useRef } from "react"
+import gsap from "gsap"
+import { useGSAP } from "@gsap/react"
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Services = () => {
   const services = [
@@ -46,14 +50,31 @@ const Services = () => {
       features: ["Responsive fixes", "React refactoring", "New UI features"],
     },
   ];
+
+  gsap.registerPlugin(ScrollTrigger);
+  const scopeRef = useRef(null);
+  useGSAP(() => {
+    gsap.from(".service", {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      stagger:0.1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".service", 
+        start: "top 85%",            
+        toggleActions: "play none none none" 
+      }
+    });
+  }, { scope: scopeRef })
   return (
-    <section id="services" className="relative w-full flex flex-col items-center text-center">
-      <h2 className="text-4xl font-bold text-center mb-4">Services</h2>
+    <section id="services" className="relative w-full flex flex-col items-center text-center" ref={scopeRef}>
+      <h2 className="service text-4xl font-bold text-center mb-4">Services</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-items-center gap-4 p-4 max-w-7xl">
         {services.map((service, index) => (
           <div
             key={index}
-            className=" max-w-xl h-full p-4 rounded-lg flex flex-col justify-between"
+            className="service max-w-xl h-full p-4 rounded-lg flex flex-col justify-between"
           >
             <div className="w-full flex justify-center mb-8">
               <img src={service.icon} className="w-37.5" alt="tools" />

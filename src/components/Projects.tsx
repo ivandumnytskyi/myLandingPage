@@ -1,15 +1,17 @@
 import GameAdvicer from "../assets/gameadvicer.png";
 import Ecom from "../assets/e-com.png";
 import landingAi from "../assets/landingai.png";
-
+import { useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import { useState } from "react";
 
 const Projects = () => {
   const projects = [
     {
       title: "E-commerce Website",
-      stack:
-        "Next.js · TypeScript · PostgreSQL · Prisma · Tailwind CSS",
+      stack: "Next.js · TypeScript · PostgreSQL · Prisma · Tailwind CSS",
       description:
         "A full-stack online store featuring product discovery, search, sorting, product details, and user authentication, backed by a relational database.",
       image: Ecom,
@@ -30,38 +32,57 @@ const Projects = () => {
     },
   ];
 
-  const [visible, setVisible] = useState<number | null>(null);;
+  gsap.registerPlugin(ScrollTrigger);
+  const scopeRef = useRef(null);
+  useGSAP(() => {
+    gsap.from(".project", {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      stagger:0.1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".project", 
+        start: "top 85%",            
+        toggleActions: "play none none none" 
+      }
+    });
+  }, { scope: scopeRef })
+
+  const [visible, setVisible] = useState<number | null>(null);
 
   return (
-    <section id="projects" className="relative w-full max-w-7xl">
-      <h2 className="text-4xl font-bold text-center mb-4">Projects</h2>
+    <section id="projects" className="relative w-full max-w-7xl" ref={scopeRef}>
+      <h2 className="project text-4xl font-bold text-center mb-4">Projects</h2>
       <div className="grid grid-cols-1  lg:grid-cols-3 gap-4 p-4">
         {projects.map((project, index) => (
           <div
-          key={index}
-          className="bg-[#1de00724] relative p-4 rounded-lg gap-8 lg:max-h-120 flex flex-col hover:bg-[#1de0074d] transition-colors duration-300"
-          onClick={() => setVisible((prev) => prev === index ? null : index)}
-        >
-          <h3 className="text-xl font-bold">{project.title}</h3>
-
-          <div
-            className={`overflow-hidden md:max-h-92 lg:max-h-58 transition-[max-height] duration-500 rounded-lg
-          ${visible === index ? "max-h-58" : "max-h-0"}`}
+            key={index}
+            className="project bg-[#1de00724] relative p-4 rounded-lg gap-8 lg:max-h-120 flex flex-col hover:bg-[#1de0074d] transition-colors duration-300"
+            onClick={() =>
+              setVisible((prev) => (prev === index ? null : index))
+            }
           >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full mb-2 rounded-lg"
-            />
+            <h3 className="text-xl font-bold">{project.title}</h3>
+
+            <div
+              className={`overflow-hidden md:max-h-92 lg:max-h-58 transition-[max-height] duration-500 rounded-lg
+          ${visible === index ? "max-h-58" : "max-h-0"}`}
+            >
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full mb-2 rounded-lg"
+              />
+            </div>
+
+            <p className="text-gray-400">{project.stack}</p>
+            <p>{project.description}</p>
+            <span className="absolute top-4 right-1 text-gray-400 opacity-80 max-w-30 md:hidden">
+              see screenshot
+            </span>
           </div>
-
-          <p className="text-gray-400">{project.stack}</p>
-          <p>{project.description}</p>
-          <span className="absolute top-4 right-2 text-gray-400 opacity-80 md:hidden">Tap to see screenshot</span>
-        </div>
         ))}
-
-        
       </div>
     </section>
   );

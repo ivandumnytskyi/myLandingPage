@@ -1,16 +1,37 @@
+import { useRef } from "react"
+import gsap from "gsap"
+import { useGSAP } from "@gsap/react"
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 const Contacts = () => {
+  gsap.registerPlugin(ScrollTrigger);
+  const scopeRef = useRef(null);
+  useGSAP(() => {
+    gsap.from(".contacts", {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      stagger:0.1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".contacts", 
+        start: "top 85%",            
+        toggleActions: "play none none none" 
+      }
+    });
+  }, { scope: scopeRef })
   return (
-    <section id="contact" className="mx-auto max-w-5xl px-6 py-18 text-center">
-      <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+    <section id="contact" className="mx-auto max-w-5xl px-6 py-18 text-center" ref={scopeRef}>
+      <h2 className="contacts text-3xl font-semibold tracking-tight sm:text-4xl">
         Have a project in mind?
       </h2>
 
-      <p className="mx-auto mt-4 max-w-xl text-neutral-400">
+      <p className="contacts mx-auto mt-4 max-w-xl text-neutral-400">
         I’m available for freelance frontend and React/TypeScript projects. Send
         me a short message about your idea or existing website.
       </p>
 
-      <div className="mt-8 flex flex-wrap justify-center gap-4">
+      <div className="contacts mt-8 flex flex-wrap justify-center gap-4">
         <a
           href="mailto:ivandumnytskyi@gmail.com"
           className="rounded-full bg-white px-6 py-3 font-medium text-black transition hover:bg-neutral-200"
