@@ -36,7 +36,7 @@ const Header = () => {
         scrollTo: {
           y: targetId,
           offsetY: calculateOffset(),
-          autoKill: mobile, 
+          autoKill: !mobile, 
         },
       });
     },
