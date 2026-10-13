@@ -3,7 +3,6 @@ import Ecom from "../assets/e-com.png";
 import landingAi from "../assets/landingai.png";
 import { useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useState } from "react";
 
@@ -32,22 +31,24 @@ const Projects = () => {
     },
   ];
 
-  gsap.registerPlugin(ScrollTrigger);
   const scopeRef = useRef(null);
-  useGSAP(() => {
-    gsap.from(".project", {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      stagger:0.1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".project", 
-        start: "top 85%",            
-        toggleActions: "play none none none" 
-      }
-    });
-  }, { scope: scopeRef })
+  useGSAP(
+    () => {
+      gsap.from(".project", {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".project",
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      });
+    },
+    { scope: scopeRef },
+  );
 
   const [visible, setVisible] = useState<number | null>(null);
 

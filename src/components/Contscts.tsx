@@ -1,27 +1,32 @@
-import { useRef } from "react"
-import gsap from "gsap"
-import { useGSAP } from "@gsap/react"
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Contacts = () => {
-  gsap.registerPlugin(ScrollTrigger);
   const scopeRef = useRef(null);
-  useGSAP(() => {
-    gsap.from(".contacts", {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      stagger:0.1,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".contacts", 
-        start: "top 85%",            
-        toggleActions: "play none none none" 
-      }
-    });
-  }, { scope: scopeRef })
+  useGSAP(
+    () => {
+      gsap.from(".contacts", {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".contacts",
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      });
+    },
+    { scope: scopeRef },
+  );
   return (
-    <section id="contact" className="mx-auto max-w-5xl px-6 py-18 text-center" ref={scopeRef}>
+    <section
+      id="contact"
+      className="mx-auto max-w-5xl px-6 py-18 text-center"
+      ref={scopeRef}
+    >
       <h2 className="contacts text-3xl font-semibold tracking-tight sm:text-4xl">
         Have a project in mind?
       </h2>

@@ -9,12 +9,7 @@ const Hero = () => {
   const [shaderReady, setShaderReady] = useState(false);
 
   useGSAP(() => {
-    gsap.from(".hero",
-      { opacity: 0,
-      y: 50,
-      duration: 1,
-      stagger:0.1, },
-    );
+    gsap.from(".hero", { opacity: 0, y: 50, duration: 1, stagger: 0.1 });
   });
 
   useEffect(() => {
