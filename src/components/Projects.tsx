@@ -19,7 +19,7 @@ const Projects = () => {
     },
     {
       title: "Game Advicer",
-      stack: "Next.js · React · TypeScript · OpenAI API",
+      stack: "Next.js · IGDB API · TypeScript · OpenAI API",
       description:
         "An AI-powered web app that helps gamers discover games tailored to their preferences, favorite genres, platforms, and play styles.",
       image: GameAdvicer,
@@ -28,7 +28,7 @@ const Projects = () => {
     },
     {
       title: "SaaS landing page",
-      stack: "Next.js · React · TypeScript · StyleX",
+      stack: "Vite · Express.js · React · TypeScript · StyleX",
       description:
         "A modern, responsive SaaS landing page built with reusable components, consistent styling, and a clean, user-focused layout.",
       image: landingAi,
